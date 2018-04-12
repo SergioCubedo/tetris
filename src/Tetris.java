@@ -26,27 +26,31 @@ public class Tetris extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        scoreBoard1 = new ScoreBoard();
+        scoreBoard = new ScoreBoard();
+        board2 = new Board();
         jMenuBar1 = new javax.swing.JMenuBar();
         Game = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuIteminitGame = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        scoreBoard1.setText("scoreBoard1");
-        getContentPane().add(scoreBoard1, java.awt.BorderLayout.PAGE_END);
+        scoreBoard.setText("scoreBoard1");
+        getContentPane().add(scoreBoard, java.awt.BorderLayout.PAGE_END);
+
+        board2.setPreferredSize(new java.awt.Dimension(100, 200));
+        getContentPane().add(board2, java.awt.BorderLayout.CENTER);
 
         Game.setText("Game");
 
-        jMenuItem1.setText("init game");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuIteminitGame.setText("init game");
+        jMenuIteminitGame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenuIteminitGameActionPerformed(evt);
             }
         });
-        Game.add(jMenuItem1);
+        Game.add(jMenuIteminitGame);
 
         jMenuBar1.add(Game);
 
@@ -61,9 +65,11 @@ public class Tetris extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jMenuIteminitGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuIteminitGameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+        board2.initGame();
+        
+    }//GEN-LAST:event_jMenuIteminitGameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -102,10 +108,11 @@ public class Tetris extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Game;
+    private Board board2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private ScoreBoard scoreBoard1;
+    private javax.swing.JMenuItem jMenuIteminitGame;
+    private ScoreBoard scoreBoard;
     // End of variables declaration//GEN-END:variables
 }
