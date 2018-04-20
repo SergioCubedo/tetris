@@ -134,15 +134,24 @@ public class Board extends JPanel implements ActionListener {
             currentRow++;
             repaint();
         } else {
-            moveCurrentShapeToMatrix();
-            checkCompletedLines();
-            currentShape = nextPiecePanel.getShape();
-            nextPiecePanel.changeShape(Shape.getRandomShape());
-            currentShape = new Shape();
-            currentRow = INIT_ROW;
-            currentCol = NUM_COLS / 2;
+            if (currentRow == INIT_ROW) {
+                processGameOver();
+            } else {
+                moveCurrentShapeToMatrix();
+                checkCompletedLines();
+                currentShape = nextPiecePanel.getShape();
+                nextPiecePanel.changeShape(Shape.getRandomShape());
+                currentRow = INIT_ROW;
+                currentCol = NUM_COLS / 2;
+            }
         }
 
+    }
+
+    private void processGameOver() {
+        timer.stop();
+        removeKeyListener(myKeyAdapter);
+        scoreboard.displayGameOver();
     }
 
     public void checkCompletedLines() {
@@ -178,7 +187,10 @@ public class Board extends JPanel implements ActionListener {
         for (int point = 0; point <= 3; point++) {
             int row = currentRow + squaresArray[point][1];
             int col = currentCol + squaresArray[point][0];
-            matrix[row][col] = currentShape.getShape();
+            if (row >= 0) {
+                matrix[row][col] = currentShape.getShape();
+            }
+
         }
     }
 

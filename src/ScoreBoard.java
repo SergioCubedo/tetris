@@ -27,4 +27,12 @@ public class ScoreBoard extends JLabel {
     public void reset() {
         score = 0;
     }
+    
+    public void display() {
+        setText("Score: " + score);
+    }
+    
+    public void displayGameOver() {
+        setText("Game Over Score: " + score);
+    }
 }

@@ -23,10 +23,10 @@ public class SavePiece extends JPanel {
 
         super();
         saveShape = null;
-        saveMatrix = new Tetrominoes[NextPiece.MATRIX_SIZE][NextPiece.MATRIX_SIZE];
+        saveMatrix = new Tetrominoes[NextPiecePanel.MATRIX_SIZE][NextPiecePanel.MATRIX_SIZE];
 
-        for (int row = 0; row < NextPiece.MATRIX_SIZE; row++) {
-            for (int col = 0; col < NextPiece.MATRIX_SIZE; col++) {
+        for (int row = 0; row < NextPiecePanel.MATRIX_SIZE; row++) {
+            for (int col = 0; col < NextPiecePanel.MATRIX_SIZE; col++) {
 
                 saveMatrix[row][col] = Tetrominoes.NoShape;
             }
@@ -35,68 +35,27 @@ public class SavePiece extends JPanel {
 
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        drawBoard(g);
         if (saveShape != null) {
-            drawSavePiece(g);
+            saveShape.draw(g, 1, 1, squareWidth(), squareHeight());
         }
 
     }
 
-    public void drawBoard(Graphics g) {
+    
 
-        for (int row = 0; row < NextPiece.MATRIX_SIZE; row++) {
-            for (int col = 0; col < NextPiece.MATRIX_SIZE; col++) {
-
-                drawSquare(g, row, col, saveMatrix[row][col]);
-            }
-        }
-    }
-
-    private void drawSquare(Graphics g, int row, int col, Tetrominoes shape) {
-        Color colors[] = {new Color(0, 0, 0),
-            new Color(204, 102, 102),
-            new Color(102, 204, 102), new Color(102, 102, 204),
-            new Color(204, 204, 102), new Color(204, 102, 204),
-            new Color(102, 204, 204), new Color(218, 170, 0)
-        };
-        int x = col * squareWidth();
-        int y = row * squareHeight();
-        Color color = colors[shape.ordinal()];
-        g.setColor(color);
-        g.fillRect(x + 1, y + 1, squareWidth() - 2,
-                squareHeight() - 2);
-        g.setColor(color.brighter());
-        g.drawLine(x, y + squareHeight() - 1, x, y);
-        g.drawLine(x, y, x + squareWidth() - 1, y);
-        g.setColor(color.darker());
-        g.drawLine(x + 1, y + squareHeight() - 1,
-                x + squareWidth() - 1, y + squareHeight() - 1);
-        g.drawLine(x + squareWidth() - 1,
-                y + squareHeight() - 1,
-                x + squareWidth() - 1, y + 1);
-    }
 
     private int squareWidth() {
 
-        return getWidth() / NextPiece.MATRIX_SIZE;
+        return getWidth() / NextPiecePanel.MATRIX_SIZE;
     }
 
     private int squareHeight() {
 
-        return getHeight() / NextPiece.MATRIX_SIZE;
+        return getHeight() / NextPiecePanel.MATRIX_SIZE;
     }
 
-    private void drawSavePiece(Graphics g) {
-
-        int[][] coordinates = saveShape.getCoordinates();
-        for (int i = 0; i <= 3; i++) {
-
-            int row = coordinates[i][1];
-            int col = coordinates[i][0];
-
-            drawSquare(g, row + NextPiece.MATRIX_SIZE / 2 - 1, col + NextPiece.MATRIX_SIZE / 2 - 1, saveShape.getShape());
-        }
-    }
+    
+    
 
     public Shape setPieceShape(Shape saveShape) {
 
