@@ -27,7 +27,9 @@ public class Tetris extends javax.swing.JFrame {
     private void initComponents() {
 
         scoreBoard = new ScoreBoard();
-        board2 = new Board();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        board1 = new Board();
         jMenuBar1 = new javax.swing.JMenuBar();
         Game = new javax.swing.JMenu();
         jMenuIteminitGame = new javax.swing.JMenuItem();
@@ -39,8 +41,29 @@ public class Tetris extends javax.swing.JFrame {
         scoreBoard.setText("scoreBoard1");
         getContentPane().add(scoreBoard, java.awt.BorderLayout.PAGE_END);
 
-        board2.setPreferredSize(new java.awt.Dimension(100, 200));
-        getContentPane().add(board2, java.awt.BorderLayout.CENTER);
+        jPanel1.setPreferredSize(new java.awt.Dimension(100, 100));
+
+        jPanel2.setBackground(new java.awt.Color(102, 153, 255));
+        jPanel2.setPreferredSize(new java.awt.Dimension(100, 100));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(116, 116, 116)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(138, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.LINE_END);
+
+        board1.setPreferredSize(new java.awt.Dimension(200, 400));
+        getContentPane().add(board1, java.awt.BorderLayout.CENTER);
 
         Game.setText("Game");
 
@@ -67,7 +90,8 @@ public class Tetris extends javax.swing.JFrame {
 
     private void jMenuIteminitGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuIteminitGameActionPerformed
         // TODO add your handling code here:
-        board2.initGame();
+        board1.initGame();
+        
         
     }//GEN-LAST:event_jMenuIteminitGameActionPerformed
 
@@ -108,11 +132,13 @@ public class Tetris extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Game;
-    private Board board2;
+    private Board board1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuIteminitGame;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private ScoreBoard scoreBoard;
     // End of variables declaration//GEN-END:variables
 }
